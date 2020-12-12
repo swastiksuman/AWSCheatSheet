@@ -1,0 +1,12 @@
+---
+  Resources:
+    MySecurityGroup:
+      Type: AWS::EC2::SecurityGroup
+      Properties:
+        GroupDescription: SkywalkerGroup
+        GroupName: skywalker-group
+        SecurityGroupIngress:
+          - IpProtocol: tcp
+            FromPort: 8080
+            ToPort: 8090
+            CidrIp: 183.83.0.0/16   

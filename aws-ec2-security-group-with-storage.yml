@@ -6,7 +6,7 @@
         AvailabilityZone: us-east-1a
         ImageId: ami-02354e95b39ca8dec
         InstanceType: t2.micro
-        KeyName: macOS-key
+        KeyName: my-ubuntu
         SecurityGroups:
           - !Ref MySecurityGroup
         Volumes:
@@ -17,7 +17,7 @@
     MyVolume:
       Type: AWS::EC2::Volume
       Properties:
-        Size: 5
+        Size: 50
         VolumeType: gp2
         AvailabilityZone: us-east-1a
 
@@ -30,4 +30,9 @@
           - IpProtocol: tcp
             FromPort: 8080
             ToPort: 8090
-            CidrIp: 183.83.0.0/16    
+            CidrIp: 183.83.0.0/16
+          -
+            IpProtocol: tcp
+            FromPort: 22
+            ToPort: 22
+            CidrIp: 183.83.0.0/16

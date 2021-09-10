@@ -32,16 +32,8 @@ Resources:
       Tags:
         - Key: Name
           Value: Todo
-  AmplifyBranch:
-    Type: AWS::Amplify::Branch
-    Properties:
-      BranchName: master
-      AppId: !GetAtt AmplifyApp.AppId
-      Description: Master Branch
-      EnableAutoBuild: true
-      Tags:
-        - Key: Branch
-          Value: master
+      IAMServiceRole: arn:aws:iam::749797989296:role/service-role/swastik
+
 Outputs:
   DefaultDomain:
     Value: !GetAtt AmplifyApp.DefaultDomain

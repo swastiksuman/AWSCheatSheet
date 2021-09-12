@@ -30,7 +30,7 @@ Resources:
           artifacts:
             baseDirectory: /serverless-react-app/build/
             files:
-              - '*'
+              - '**/*'
       Tags:
         - Key: Name
           Value: Todo

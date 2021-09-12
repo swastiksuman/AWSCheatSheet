@@ -1,0 +1,53 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+Parameters:
+  Repository:
+    Type: String
+    Description: GitHub Repository URL
+
+  OauthToken:
+    Type: String
+    Description: GitHub Repository URL
+    NoEcho: true
+
+Resources:
+  AmplifyApp:
+    Type: "AWS::Amplify::App"
+    Properties:
+      Name: WelcomeApp
+      Repository: !Ref Repository
+      Description: WelcomeApp Example
+      OauthToken: !Ref OauthToken
+      BuildSpec: |-
+        version: 0.1
+        frontend:
+          phases:
+            build:
+              commands:
+                - cd serverless-react-app
+                - npm install
+                - npm run build
+          artifacts:
+            baseDirectory: /serverless-react-app/build/
+            files:
+              - '*'
+      Tags:
+        - Key: Name
+          Value: Todo
+
+  AmplifyBranch:
+    Type: AWS::Amplify::Branch
+    Properties:
+      BranchName: master
+      AppId: !GetAtt AmplifyApp.AppId
+      Description: Master Branch
+      EnableAutoBuild: false
+      Tags:
+        - Key: Name
+          Value: test-master
+        - Key: Branch
+          Value: master
+
+Outputs:
+  DefaultDomain:
+    Value: !GetAtt AmplifyApp.DefaultDomain

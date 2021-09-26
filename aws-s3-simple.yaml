@@ -1,6 +1,12 @@
+Parameters:
+  BucketNameParam:
+    Type: String
+    Default: swastik-personal-bucket
+    Description: Bucket Name to be used
 Resources:
   S3Bucket:
     Type: 'AWS::S3::Bucket'
     DeletionPolicy: Retain
     Properties:
-      BucketName: swastik-personal-bucket
+      BucketName:
+        Ref: BucketNameParam

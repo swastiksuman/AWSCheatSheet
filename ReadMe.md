@@ -14,3 +14,7 @@
 ## Amplify
 - aws amplify list-apps
 - aws amplify start-job --app-id dgh57ty0q1ndf --branch-name master --job-type RELEASE
+
+## EKS
+- aws eks update-kubeconfig --name MyEKSCluster
+- kubectl get svc  

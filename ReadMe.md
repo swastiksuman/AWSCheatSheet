@@ -18,3 +18,5 @@
 ## EKS
 - aws eks update-kubeconfig --name MyEKSCluster
 - kubectl get svc  
+- kubectl apply -f https://docs.projectcalico.org/v3.14/manifests/calico.yaml
+- kubectl get pods -n kube-system -o wide
